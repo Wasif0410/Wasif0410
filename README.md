@@ -75,7 +75,7 @@ Welcome to my GitHub
 📫 Reach me at WasifSaeed0410@gmail.com
 
 
-<a href="https://www.example.com](https://www.linkedin.com/in/wasif-saeed-077169203/">
+<a href="https://www.linkedin.com/in/wasif-saeed-077169203/">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/LinkedIn_logo.svg/800px-LinkedIn_logo.svg.png?20230525070944" alt="Alt text" width="200">
 </a>
 
