@@ -1,16 +1,25 @@
-## Hi there 👋
+## Hi there, Im Wasif Saeed👋
+Welcome to my GitHub
 
-<!--
-**Wasif0410/Wasif0410** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### About me
+* I'm a second-year computer science student @ Toronto Metropolitan University
+* Currently working at the RCMP (Royal Canadian Mounted Police) as a Junior Programming intern
+* Searching for winter 2025 and summer 2025 internships
 
-Here are some ideas to get you started:
+### Skills
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+**Programming Languages:** Python, Java, JavaScript, HTML-CSS, SQL, PHP, C#, C, C++, Perl, Ruby, Bash, Lisp, Elixir, Rust, Haskell, Smalltalk
+
+**Frameworks:** React, Tailwind, Bootstrap, JQuery, Flask, Django, Node JS, Google API, SVG, CGI
+
+**Tools:** Git/GitHub, APIs, MySQL, Linux, VS Code, Unity, Figma, Adobe Apps
+
+
+### Connect with me
+
+📫 Reach me at WasifSaeed0410@gmail.com
+
+<a href="https://www.example.com">
+  <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png" alt="Alt text" width="70">
+</a>
+
