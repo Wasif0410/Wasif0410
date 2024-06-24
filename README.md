@@ -73,9 +73,10 @@ Welcome to my GitHub
 ## 🌐 Connect with me
 
 📫 Reach me at WasifSaeed0410@gmail.com
-
-
+<br>
+📇 Connect with me on LinkedIn! 
 <a href="https://www.linkedin.com/in/wasif-saeed-077169203/">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/LinkedIn_logo.svg/800px-LinkedIn_logo.svg.png?20230525070944" alt="Alt text" width="200">
+Wasif Saeed
 </a>
+
 
