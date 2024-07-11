@@ -2,7 +2,7 @@
 Welcome to my GitHub
 
 ## 📚 About me
-* I'm a second-year computer science student @ Toronto Metropolitan University 🏫
+* I'm a third-year computer science student @ Toronto Metropolitan University 🏫
 * Currently working at the RCMP (Royal Canadian Mounted Police) as a Junior Programming intern 👮‍♂️💻
 * Searching for winter 2025 and summer 2025 internships 🌟
 
