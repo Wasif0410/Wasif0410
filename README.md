@@ -1,10 +1,21 @@
 # Hi there, Im Wasif Saeed👋
 Welcome to my GitHub
 
-## 📚 About me
-* I'm a third-year computer science student @ Toronto Metropolitan University 🏫
-* Currently working at the RCMP (Royal Canadian Mounted Police) as a Junior Programming intern 👮‍♂️💻
-* Searching for winter 2025 and summer 2025 internships 🌟
+
+## 📚 About Me  
+* I'm a third-year **Computer Science student** @ Toronto Metropolitan University 🧠  
+* Specializing in **AI**, **machine learning**, and **full-stack development** 🤖  
+* Developed and deployed real-world AI solutions in **healthcare automation** at IQonsulting 🏥  
+* Built intelligent agents and optimized vector databases at **Saige** 🧩  
+* Previously improved web systems and automated workflows at the **RCMP** 👮‍♂️  
+* Actively exploring **LLMs**, **TTS**, and real-time inference systems 💬  
+* Searching for **Winter 2025** and **Summer 2025** internships focused on **AI, ML, or software engineering** 🌟  
+
+## 🧠 AI & ML Highlights  
+* Built and deployed **LLM + TTS + computer vision** models on **GCP/Azure**  
+* Created a **CNN-based food image classifier** with 87% accuracy using PyTorch 🍜  
+* Engineered AI pipelines with **LangChain**, **Astra DB**, and **Dockerized** cloud apps  
+* Passionate about **NLP**, **AI agents**, and deploying ML models in production environments  
 
 ## Skills
 
