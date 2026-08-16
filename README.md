@@ -5,20 +5,7 @@ Welcome to my GitHub
 ## 📚 About Me  
 * I'm a fourth-year **Computer Science student** @ Toronto Metropolitan University 🧠  
 * Specializing in **Artificial Intelligence**, **machine learning systems**, and **production AI engineering** 🤖  
-* Currently working as a **Product & AI Intern at Dayforce** building AI-powered product features 🚀  
-* Previously developed and deployed real-world AI solutions in **healthcare automation** at IQonsulting 🏥  
-* Built intelligent agents, RAG pipelines, and optimized vector databases at **Saige** 🧩  
-* Automated internal systems and improved workflows at the **RCMP** 👮‍♂️  
-* Focused on **LLMs, RAG architectures, AI agents, and scalable cloud inference systems** 💬  
-* Actively pursuing advanced **AI/ML engineering roles and research-driven internships** 🌟  
 
-## 🧠 AI & ML Highlights  
-* Designed and deployed full **LLM + RAG + TTS + computer vision** systems on **GCP and Azure**  
-* Built a **German-to-English Transformer model** and production NLP pipelines  
-* Created a **CNN-based food image classifier** with 87% accuracy using PyTorch 🍜  
-* Engineered scalable AI workflows using **LangChain, Astra DB, vector databases, and Docker**  
-* Built end-to-end AI systems including speech-to-text, text-to-speech, and real-time inference APIs  
-* Passionate about **multimodal AI, intelligent agents, and deploying ML systems in production environments**  
 
 ## Skills
 
@@ -86,7 +73,7 @@ Welcome to my GitHub
 
 ## 🌐 Connect with me
 
-📫 Reach me at WasifSaeed0410@gmail.com
+📫 Reach me at Wasifsaeed0410@gmail.com
 <br>
 📇 Connect with me on LinkedIn! 
 <a href="https://www.linkedin.com/in/wasif-saeed-077169203/">
