@@ -76,6 +76,6 @@ Welcome to my GitHub
 📫 Reach me at Wasifsaeed0410@gmail.com
 <br>
 📇 Connect with me on LinkedIn! 
-<a href="https://www.linkedin.com/in/wasif-saeed-077169203/">
+<a href="https://www.linkedin.com/in/wasif-s">
 Wasif Saeed
 </a>
