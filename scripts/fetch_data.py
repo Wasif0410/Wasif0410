@@ -5,8 +5,7 @@ Collect the live numbers for the profile cards into data/profile.json:
   - daily contribution counts, read from GitHub's public contributions page
     (the same HTML the profile page loads; no login needed), plus the streaks,
     busiest day and monthly totals derived from them
-  - stars and main language of the featured repos (GitHub REST API)
-  - the number of entries in the Trajectory learning log
+  - stars and main language of the featured public repos (GitHub REST API)
 
 Each source is fetched on its own. If one fails, its value from the previous
 data/profile.json is kept, so the cards still render. The script exits with an
@@ -87,23 +86,13 @@ def summarize(days):
     busiest = max(days, key=lambda d: (d["count"], d["date"])) if days else None
     return {
         "total": sum(d["count"] for d in days),
+        "active_days": sum(1 for d in days if d["count"] > 0),
         "current_streak": _current_streak(days),
         "longest_streak": _longest_streak(days),
         "busiest": {"date": busiest["date"], "count": busiest["count"]} if busiest else None,
         "months": months,
         "days": days,
     }
-
-
-def count_entries(tree, folder):
-    prefix = folder.rstrip("/") + "/"
-    return sum(
-        1
-        for item in tree.get("tree", [])
-        if item.get("type") == "blob"
-        and item["path"].startswith(prefix)
-        and item["path"].endswith(".mdx")
-    )
 
 
 # ---- network --------------------------------------------------------------------------
@@ -130,11 +119,6 @@ def fetch_contributions():
 def fetch_repo(name):
     info = json.loads(http_get(f"{API}/repos/{config.USER}/{name}"))
     return {"stars": info["stargazers_count"], "language": info["language"]}
-
-
-def fetch_trajectory_entries():
-    tree = json.loads(http_get(f"{API}/repos/{config.TRAJECTORY_REPO}/git/trees/HEAD?recursive=1"))
-    return count_entries(tree, config.TRAJECTORY_DIR)
 
 
 # ---- main -------------------------------------------------------------------------------
@@ -165,18 +149,14 @@ def main():
 
     out["repos"] = {}
     for item in config.FEATURED:
-        name = item["repo"]
+        name = item.get("repo")
+        if not name:  # private project: nothing public to fetch
+            continue
         try:
             out["repos"][name] = fetch_repo(name)
         except Exception as err:  # noqa: BLE001
             warn(f"repo {name}", err)
             out["repos"][name] = prev.get("repos", {}).get(name, {"stars": 0, "language": None})
-
-    try:
-        out["trajectory_entries"] = fetch_trajectory_entries()
-    except Exception as err:  # noqa: BLE001
-        warn("Trajectory entries", err)
-        out["trajectory_entries"] = prev.get("trajectory_entries", 0)
 
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8", newline="\n") as f:
@@ -187,7 +167,7 @@ def main():
     print(
         f"wrote data/profile.json: {c['total']:,} contributions, "
         f"streak {c['current_streak']}, longest {c['longest_streak']}, "
-        f"{out['trajectory_entries']} Trajectory entries"
+        f"{c['active_days']} active days"
     )
 
 

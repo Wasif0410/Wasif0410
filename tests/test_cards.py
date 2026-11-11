@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 
 import config  # noqa: E402
 import fetch_data  # noqa: E402
-from cards import activity, heatmap, hero, repos, tiles  # noqa: E402
+from cards import activity, heatmap, hero, repos, shipped, tiles  # noqa: E402
 
 SVG = "{http://www.w3.org/2000/svg}"
 MAX_BYTES = 300_000
@@ -27,11 +27,9 @@ def sample_data():
     return {
         "contributions": fetch_data.summarize(days),
         "repos": {
-            "job-application-skills": {"stars": 4, "language": "TeX"},
-            "Where-AI-Agents-Break": {"stars": 1, "language": None},
-            "Trajectory": {"stars": 0, "language": "TypeScript"},
+            "My-Daily-Standup": {"stars": 2, "language": "Rust"},
+            "footy-site": {"stars": 7, "language": None},
         },
-        "trajectory_entries": 123,
     }
 
 
@@ -72,50 +70,90 @@ class HeatmapTest(CardTestMixin, unittest.TestCase):
 
 
 class ActivityTest(CardTestMixin, unittest.TestCase):
-    def test_shows_total_streaks_and_twelve_bars(self):
+    def test_shows_total_streaks_active_days_and_twelve_bars(self):
         data = sample_data()
         svg = activity.render(config, data)
         self.check(svg, 880)
         found = texts(svg)
         c = data["contributions"]
         self.assertIn(f"{c['total']:,}", found)
-        self.assertIn(str(c["longest_streak"]), found)
+        self.assertIn(f"/ {c['longest_streak']}", found)
+        self.assertIn(str(c["active_days"]), found)
         bars = [r for r in ET.fromstring(svg).iter(f"{SVG}rect") if r.get("class") == "bar"]
         self.assertEqual(len(bars), 12)
 
+    def test_only_the_busiest_month_is_labelled(self):
+        data = sample_data()
+        svg = activity.render(config, data)
+        peak = max(m["total"] for m in data["contributions"]["months"])
+        found = texts(svg)
+        self.assertEqual(found.count(f"{peak:,}"), 1)
+
 
 class TilesTest(CardTestMixin, unittest.TestCase):
-    def test_hand_set_tile(self):
-        svg = tiles.render(config, sample_data(), 0)
-        self.check(svg, 880 / 3)
-        self.assertIn(config.TILES[0]["value"], texts(svg))
+    def test_tiles_show_work_study_research(self):
+        for i, tile in enumerate(config.TILES):
+            svg = tiles.render(config, sample_data(), i)
+            self.check(svg, 880 / 3)
+            self.assertIn(tile["value"], texts(svg))
+            self.assertIn(tile["caption"], texts(svg))
 
-    def test_learn_tile_uses_live_trajectory_count(self):
-        svg = tiles.render(config, sample_data(), 2)
-        self.assertIn("123", texts(svg))
+    def test_longest_value_fits_inside_its_tile(self):
+        from cards import common
+
+        size = tiles.value_size(config)
+        _, _, w = common.split_geometry(0)
+        for tile in config.TILES:
+            self.assertLessEqual(common.text_width(tile["value"], size), w - 2 * tiles.PAD + 0.01)
 
     def test_section_title(self):
-        svg = tiles.title(config, "WHAT I'M BUILDING", "LIVE FROM GITHUB")
+        svg = tiles.title(config, "WHAT I'M BUILDING", "RIGHT NOW")
         self.check(svg, 880)
         self.assertIn("WHAT I'M BUILDING", texts(svg))
 
 
-class ReposTest(CardTestMixin, unittest.TestCase):
-    def test_repo_card_shows_live_stars_and_language(self):
+class ShippedTest(CardTestMixin, unittest.TestCase):
+    def test_count_and_one_pill_per_project(self):
+        svg = shipped.render(config, sample_data())
+        self.check(svg, 880)
+        found = texts(svg)
+        self.assertIn(str(len(config.SHIPPED)), found)
+        chips = [t.text for t in ET.fromstring(svg).iter(f"{SVG}text") if t.get("class") == "chip"]
+        self.assertEqual(chips, list(config.SHIPPED))
+
+    def test_pills_stay_inside_the_card(self):
+        from cards import common
+
+        width = common.CARD_W - shipped.PAD - shipped.CHIPS_X
+        placed, _ = shipped.layout(config.SHIPPED, width)
+        for _, x, _, w in placed:
+            self.assertLessEqual(x + w, width + 0.01)
+
+
+class ProjectCardTest(CardTestMixin, unittest.TestCase):
+    def test_private_project_shows_private_and_stack(self):
         svg = repos.render(config, sample_data(), 0)
         self.check(svg, 880 / 3)
         found = texts(svg)
-        self.assertIn("job-application-skills", found)
-        self.assertIn("4", found)
-        self.assertIn("TeX", found)
+        self.assertIn("Probative Labs", found)
+        self.assertIn("PRIVATE", found)
+        self.assertIn(config.FEATURED[0]["stack"], found)
+        self.assertIn("BUILDING", found)
 
-    def test_repo_without_language_still_renders(self):
+    def test_public_project_shows_live_stars_and_language(self):
         svg = repos.render(config, sample_data(), 1)
+        found = texts(svg)
+        self.assertIn("2", found)
+        self.assertIn("Rust", found)
+
+    def test_public_project_without_language_still_renders(self):
+        svg = repos.render(config, sample_data(), 2)
         self.check(svg, 880 / 3)
+        self.assertIn("LIVE", texts(svg))
 
     def test_description_wraps_to_three_lines_max(self):
         class LongCfg:
-            FEATURED = [{"repo": "Trajectory", "desc": "word " * 60}]
+            FEATURED = [{"title": "X", "repo": None, "desc": "word " * 60, "status": "building"}]
 
         svg = repos.render(LongCfg, sample_data(), 0)
         desc_lines = [t for t in ET.fromstring(svg).iter(f"{SVG}text") if t.get("class") == "desc"]

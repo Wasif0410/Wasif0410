@@ -18,54 +18,78 @@ HEADLINE = (
 )
 SITE = "https://wasifsaeed.com"
 
-# ---- three tiles ----------------------------------------------------------------
-# value=None means the number is live (filled from data/profile.json).
+# ---- three tiles: work, study, research -------------------------------------------
+# "value" is the big word on the tile; all three share one size, fitted to the longest.
 TILES = [
     {
-        "key": "build",
-        "label": "01 / BUILD",
-        "value": "6",
-        "caption": "products shipped",
-        "note": "Probative · MechLens · Monelyth +3",
-        "href": "https://wasifsaeed.com/#projects",
+        "key": "work",
+        "label": "01 / WORK",
+        "value": "Achievers",
+        "caption": "Software Engineer",
+        "note": "before: Dayforce, 8-month intern",
+        "href": "https://www.linkedin.com/in/wasif-s",
+    },
+    {
+        "key": "study",
+        "label": "02 / STUDY",
+        "value": "TMU",
+        "caption": "B.Sc. Computer Science, co-op",
+        "note": "graduating April 2027",
+        "href": "https://wasifsaeed.com/#education",
     },
     {
         "key": "research",
-        "label": "02 / RESEARCH",
-        "value": "5",
-        "caption": "AI research projects",
-        "note": "agents · RAG · vision · NLP",
-        "href": "https://medium.com/@wasifsaeed0410/where-ai-agents-break-0337a7507a7e",
-    },
-    {
-        "key": "learn",
-        "label": "03 / LEARN",
-        "value": None,
-        "caption": "entries logged",
-        "note": "my Trajectory learning log",
-        "href": "https://github.com/Wasif0410/Trajectory",
+        "label": "03 / RESEARCH",
+        "value": "Circle Labs",
+        "caption": "AI/NLP bachelor's thesis",
+        "note": "research lab at TMU",
+        "href": "https://wasifsaeed.com/#experience",
     },
 ]
 
-# ---- "What I'm building" repo cards ---------------------------------------------
+# ---- "Shipped in <year>" card: finished projects only ---------------------------------
+SHIPPED_YEAR = 2026
+SHIPPED = [
+    "Seven XI match centre",
+    "job-application-skills",
+    "Where AI Agents Break",
+    "Trajectory",
+    "MechLens website",
+    "wasifsaeed.com",
+    "SALAD school site",
+    "Korean food vision",
+    "German-English transformer",
+    "One-shot handwriting",
+]
+SHIPPED_HREF = "https://github.com/Wasif0410?tab=repositories"
+
+# ---- "What I'm building" cards ------------------------------------------------------
+# repo: public repo name for live stars/language (None for private projects).
+# status: "building" or "live". stack: shown when there is no public repo.
 FEATURED = [
     {
-        "repo": "job-application-skills",
-        "desc": "Claude Code skills that turn a job posting into a tailored resume, cover letter and form answers.",
+        "title": "Probative Labs",
+        "repo": None,
+        "href": "https://probative-web.vercel.app",
+        "desc": "Independent testing for AI security agents, run against a frozen replica of a company's security history.",
+        "status": "building",
+        "stack": "Python · TypeScript",
     },
     {
-        "repo": "Where-AI-Agents-Break",
-        "desc": "An independent study of AI agents on realistic SaaS revenue operations tasks.",
+        "title": "My Daily Standup",
+        "repo": "My-Daily-Standup",
+        "href": "https://github.com/Wasif0410/My-Daily-Standup",
+        "desc": "Local-first planner that turns my Obsidian goals into daily actions, with voice standups.",
+        "status": "building",
     },
     {
-        "repo": "Trajectory",
-        "desc": "A daily learning log, rendered as a windowed desktop you can browse.",
+        "title": "Seven XI match centre",
+        "repo": "footy-site",
+        "href": "https://footy-site.vercel.app",
+        "desc": "Results, player ratings with proof, stats and match reviews for my football team.",
+        "status": "live",
     },
 ]
-
-# Where the LEARN tile counts entries from.
-TRAJECTORY_REPO = "Wasif0410/Trajectory"
-TRAJECTORY_DIR = "content/entries"
 
 # ---- links row under the cards (README.md) ----------------------------------------
 LINKS = [

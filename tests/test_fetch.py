@@ -57,6 +57,9 @@ class SummarizeTest(unittest.TestCase):
     def test_total(self):
         self.assertEqual(self.s["total"], 17)
 
+    def test_active_days_counts_days_with_any_contribution(self):
+        self.assertEqual(self.s["active_days"], 7)
+
     def test_today_without_contributions_does_not_break_current_streak(self):
         self.assertEqual(self.s["current_streak"], 1)
 
@@ -96,19 +99,6 @@ class SummarizeTest(unittest.TestCase):
         self.assertEqual(months[0]["month"], "2025-03")
         self.assertEqual(months[-1]["month"], "2026-02")
 
-
-class CountEntriesTest(unittest.TestCase):
-    def test_counts_only_mdx_files_in_the_entries_folder(self):
-        tree = {
-            "tree": [
-                {"path": "content/entries/2026-08-15-a.mdx", "type": "blob"},
-                {"path": "content/entries/2026-08-16-b.mdx", "type": "blob"},
-                {"path": "content/entries/notes.md", "type": "blob"},
-                {"path": "content/context.md", "type": "blob"},
-                {"path": "content/entries", "type": "tree"},
-            ]
-        }
-        self.assertEqual(fetch_data.count_entries(tree, "content/entries"), 2)
 
 
 if __name__ == "__main__":

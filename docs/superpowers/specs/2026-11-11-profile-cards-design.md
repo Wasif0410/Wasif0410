@@ -148,3 +148,23 @@ plus a slight sine wave so it reads as engraving rather than scanlines. Output i
 - No skills/tech-stack card (dropped by choice).
 - No light/dark variants of cards: paper cards are used in both GitHub themes, like the site.
 - No auto-detection of "products" or "research" counts; those stay hand-set in `config.py`.
+
+## Revision 1 (2026-11-11, after first preview)
+
+Supersedes the matching parts above.
+
+- **Activity card** uses a cleaner layout: label, `2,074 contributions` (number in ink,
+  word in grey) over the left column, tall month bars with only the busiest month
+  labelled (white bar, ink outline, hard shadow) and the unfinished month drawn light;
+  a right column of three stats split by hairlines: current / longest streak, days with
+  a contribution (`active_days`, new in `summarize`), busiest day.
+- **Tiles** are WORK (Achievers, Software Engineer; before: Dayforce 8-month intern),
+  STUDY (TMU, B.Sc. Computer Science co-op, graduating April 2027) and RESEARCH
+  (Circle Labs, AI/NLP bachelor's thesis). The big words share one size fitted to the longest.
+- **New `shipped.svg`**: "SHIPPED IN 2026", the count of `config.SHIPPED`, and each
+  finished project as an outlined pill. Only finished projects are listed.
+- **"What I'm building"** shows current work: Probative Labs (private, links to its site,
+  shows PRIVATE and its stack), My Daily Standup, Seven XI match centre. Each card has a
+  BUILDING / LIVE badge; public ones show live stars and language.
+- Trajectory entry counting is removed (no card uses it).
+- `render_cards.py` deletes cards in `cards/` that the config no longer produces.

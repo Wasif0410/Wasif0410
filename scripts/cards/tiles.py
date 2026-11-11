@@ -1,17 +1,17 @@
-"""The three BUILD / RESEARCH / LEARN tiles, and the slim section-title card."""
+"""The three WORK / STUDY / RESEARCH tiles, and the slim section-title card."""
 from . import common as c
 
 FACE_H = 180
 TITLE_H = 70
 PAD = 22
+MAX_VALUE_SIZE = 44
 
 
-def tile_value(tile, data):
-    if tile["value"] is not None:
-        return str(tile["value"])
-    if tile["key"] == "learn":
-        return c.fmt_int(data.get("trajectory_entries", 0))
-    return "-"
+def value_size(cfg):
+    """One shared size for the big words, fitted so the longest one fits its tile."""
+    _, _, w = c.split_geometry(0)
+    inner = w - 2 * PAD
+    return min(MAX_VALUE_SIZE, *(inner / c.text_width(t["value"], 1) for t in cfg.TILES))
 
 
 def render(cfg, data, index):
@@ -22,16 +22,16 @@ def render(cfg, data, index):
         c.label(PAD, 36, tile["label"]),
         c.arrow(w - PAD - 14, 23, delay=stagger),
         f'<g class="pop" style="animation-delay:{0.35 + stagger:.2f}s">'
-        + c.text(PAD, 108, tile_value(tile, data), 60, c.DISPLAY)
+        + c.text(PAD, 104, tile["value"], value_size(cfg), c.DISPLAY)
         + "</g>",
-        c.text(PAD, 134, tile["caption"], 13, c.MONO, 700, c.INK_SOFT),
+        c.text(PAD, 134, tile["caption"], 12.5, c.MONO, 700, c.INK_SOFT),
         c.text(PAD, 158, tile["note"], 12, c.SANS, fill=c.MUTED),
     ]
     h = c.full_card_height(FACE_H)
     framed = c.card(x, c.CARD_X, w, FACE_H, "".join(body))
     return c.svg_doc(
         svg_w, h, f'<g class="rise" style="animation-delay:{stagger:.2f}s">{framed}</g>',
-        title=f"{tile['label'].split('/')[-1].strip()}: {tile_value(tile, data)} {tile['caption']}",
+        title=f"{tile['label'].split('/')[-1].strip()}: {tile['value']}, {tile['caption']}",
     )
 
 
