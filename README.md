@@ -1,81 +1,16 @@
-# Hi there, Im Wasif Saeed👋
-Welcome to my GitHub
+<!-- Every card is an animated SVG drawn by scripts/render_cards.py from scripts/config.py and
+     data/profile.json, and refreshed daily by .github/workflows/update-cards.yml.
+     Spacing is baked into the SVGs: keep this block free of blank lines, and keep each
+     three-card row on one line with no spaces between the links. -->
+<div align="center">
+<a href="https://wasifsaeed.com"><img src="./cards/hero.svg" width="100%" alt="Wasif Saeed. AI and software developer, 5th-year CS at TMU, building intelligent software systems, automation tools and AI-powered products." /></a><br>
+<img src="./cards/heatmap.svg" width="100%" alt="Wasif's GitHub contribution graph for the last 12 months, refreshed daily" /><br>
+<img src="./cards/activity.svg" width="100%" alt="Contributions in the last 12 months by month, with current streak, longest streak and busiest day" /><br>
+<a href="https://wasifsaeed.com/#projects"><img src="./cards/tile-build.svg" width="33.333%" alt="BUILD: products shipped" /></a><a href="https://medium.com/@wasifsaeed0410/where-ai-agents-break-0337a7507a7e"><img src="./cards/tile-research.svg" width="33.333%" alt="RESEARCH: AI research projects" /></a><a href="https://github.com/Wasif0410/Trajectory"><img src="./cards/tile-learn.svg" width="33.333%" alt="LEARN: entries in the Trajectory learning log" /></a><br>
+<img src="./cards/title-building.svg" width="100%" alt="What I'm building" /><br>
+<a href="https://github.com/Wasif0410/job-application-skills"><img src="./cards/repo-job-application-skills.svg" width="33.333%" alt="job-application-skills" /></a><a href="https://github.com/Wasif0410/Where-AI-Agents-Break"><img src="./cards/repo-where-ai-agents-break.svg" width="33.333%" alt="Where-AI-Agents-Break" /></a><a href="https://github.com/Wasif0410/Trajectory"><img src="./cards/repo-trajectory.svg" width="33.333%" alt="Trajectory" /></a>
+</div>
 
-
-## 📚 About Me  
-* I'm a fourth-year **Computer Science student** @ Toronto Metropolitan University 🧠  
-* Specializing in **Artificial Intelligence**, **machine learning systems**, and **production AI engineering** 🤖  
-
-
-## Skills
-
-**Programming Languages:** 
-<table>
-  <tr>
-    <td>🐍 Python</td>
-    <td>☕ Java</td>
-    <td>🌐 JavaScript</td>
-    <td>🎨 HTML-CSS</td>
-    <td>🗄️ SQL</td>
-    <td>🐘 PHP</td>
-    <td>#️⃣ C#</td>
-    <td>🖥️ C</td>
-    <td>C➕➕</td>
-  </tr>
-  <tr>
-    <td>⚪Perl</td>
-    <td>💎 Ruby</td>
-    <td>📜 Bash</td>
-    <td>🔮 Lisp</td>
-    <td>🧪 Elixir</td>
-    <td>🦀 Rust</td>
-    <td>🔣 Haskell</td>
-    <td>💬 Smalltalk</td>
-  </tr>
-</table>
-
-
-**Frameworks:**
-<table>
-  <tr>
-    <td>⚛️ React</td>
-    <td>💨 Tailwind</td>
-    <td>🎨 Bootstrap</td>
-    <td>📜 JQuery</td>
-    <td>🌶️ Flask</td>
-  </tr>
-  <tr>
-    <td>🍜 Django</td>
-    <td>🟢 Node JS</td>
-    <td>🌐 Google API</td>
-    <td>🖼️ SVG</td>
-    <td>📜 CGI</td>
-  </tr>
-</table>
-
-
-**Tools:**
-<table>
-  <tr>
-    <td>🔧 Git/GitHub</td>
-    <td>🌐 REST APIs</td>
-    <td>🗃️ MySQL</td>
-    <td>🐧 Linux</td>
-  </tr>
-  <tr>
-    <td>💻 VS Code</td>
-    <td>🐳 Docker</td>
-    <td>🎨 Figma</td>
-    <td>☁️ GCP / Azure</td>
-  </tr>
-</table>
-
-
-## 🌐 Connect with me
-
-📫 Reach me at Wasifsaeed0410@gmail.com
-<br>
-📇 Connect with me on LinkedIn! 
-<a href="https://www.linkedin.com/in/wasif-s">
-Wasif Saeed
-</a>
+<p align="center">
+<a href="https://wasifsaeed.com">wasifsaeed.com</a> &nbsp;/&nbsp; <a href="https://www.linkedin.com/in/wasif-s">linkedin</a> &nbsp;/&nbsp; <a href="https://medium.com/@wasifsaeed0410">medium</a> &nbsp;/&nbsp; <a href="mailto:Wasifsaeed0410@gmail.com">email</a>
+</p>

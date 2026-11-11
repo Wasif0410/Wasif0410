@@ -1,0 +1,53 @@
+name: Update profile cards
+
+# Redraws the cards in cards/ from live GitHub data once a day, on demand
+# (Actions tab > Update profile cards > Run workflow), and whenever the
+# scripts, fonts or portrait change on main. Standard library only: no installs.
+
+on:
+  schedule:
+    - cron: "23 6 * * *" # 06:23 UTC daily
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "fonts/**"
+      - "portrait.svg"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-cards
+  cancel-in-progress: false
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch live data (contributions, stars, Trajectory entries)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_data.py
+
+      - name: Draw the cards
+        run: python scripts/render_cards.py
+
+      - name: Commit only if something changed
+        run: |
+          git add data/profile.json cards/
+          if git diff --cached --quiet; then
+            echo "Cards are already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: refresh profile cards [skip ci]"
+          git push

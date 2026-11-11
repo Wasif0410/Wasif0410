@@ -8,6 +8,7 @@ external requests.
 """
 import base64
 import functools
+import json
 import os
 from html import escape
 
@@ -87,6 +88,19 @@ def wrap(text, max_chars):
     if line:
         lines.append(line)
     return lines
+
+
+@functools.lru_cache(maxsize=None)
+def _metrics():
+    with open(os.path.join(FONTS_DIR, "metrics.json"), encoding="utf-8") as f:
+        return json.load(f)
+
+
+def text_width(s, size, font="display", spacing=0):
+    """Width of s in px for an embedded font ('display', 'mono', 'mono-b')."""
+    table = _metrics()[font]
+    fallback = table.get("M", 0.6)
+    return sum(table.get(c, fallback) for c in str(s)) * size + spacing * len(str(s))
 
 
 @functools.lru_cache(maxsize=None)
