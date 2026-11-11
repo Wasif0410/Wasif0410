@@ -128,7 +128,8 @@ plus a slight sine wave so it reads as engraving rather than scanlines. Output i
 - Triggers: `schedule` daily at 06:23 UTC, `workflow_dispatch`, and `push` to `main`
   on `scripts/**`, `fonts/**`, `portrait.svg`.
 - `permissions: contents: write`.
-- Steps: checkout, setup Python 3.12, `pip install -r scripts/requirements.txt`,
+- Steps: checkout, setup Python 3.12 (no pip install: fetch and render use only the
+  standard library; `scripts/requirements.txt` lists the local one-time tools),
   `python scripts/fetch_data.py`, `python scripts/render_cards.py`, commit
   `data/profile.json` and `cards/*.svg` with message `chore: refresh profile cards [skip ci]`
   only when they changed (`git diff --quiet` check, plain git, no third-party action).
