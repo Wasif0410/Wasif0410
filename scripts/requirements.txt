@@ -1,0 +1,4 @@
+# Local one-time tools only. The daily workflow needs no installs.
+fonttools==4.68.0   # scripts/subset_fonts.py
+Pillow==13.0.0      # scripts/make_portrait.py
+numpy==2.5.4        # scripts/make_portrait.py
