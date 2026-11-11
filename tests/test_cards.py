@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 
 import config  # noqa: E402
 import fetch_data  # noqa: E402
-from cards import activity, heatmap, hero, repos, shipped, tiles  # noqa: E402
+from cards import activity, heatmap, hero, repos, tiles  # noqa: E402
 
 SVG = "{http://www.w3.org/2000/svg}"
 MAX_BYTES = 300_000
@@ -110,24 +110,6 @@ class TilesTest(CardTestMixin, unittest.TestCase):
         svg = tiles.title(config, "WHAT I'M BUILDING", "RIGHT NOW")
         self.check(svg, 880)
         self.assertIn("WHAT I'M BUILDING", texts(svg))
-
-
-class ShippedTest(CardTestMixin, unittest.TestCase):
-    def test_count_and_one_pill_per_project(self):
-        svg = shipped.render(config, sample_data())
-        self.check(svg, 880)
-        found = texts(svg)
-        self.assertIn(str(len(config.SHIPPED)), found)
-        chips = [t.text for t in ET.fromstring(svg).iter(f"{SVG}text") if t.get("class") == "chip"]
-        self.assertEqual(chips, list(config.SHIPPED))
-
-    def test_pills_stay_inside_the_card(self):
-        from cards import common
-
-        width = common.CARD_W - shipped.PAD - shipped.CHIPS_X
-        placed, _ = shipped.layout(config.SHIPPED, width)
-        for _, x, _, w in placed:
-            self.assertLessEqual(x + w, width + 0.01)
 
 
 class ProjectCardTest(CardTestMixin, unittest.TestCase):

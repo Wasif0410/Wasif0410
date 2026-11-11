@@ -47,22 +47,6 @@ TILES = [
     },
 ]
 
-# ---- "Shipped in <year>" card: finished projects only ---------------------------------
-SHIPPED_YEAR = 2026
-SHIPPED = [
-    "Seven XI match centre",
-    "job-application-skills",
-    "Where AI Agents Break",
-    "Trajectory",
-    "MechLens website",
-    "wasifsaeed.com",
-    "SALAD school site",
-    "Korean food vision",
-    "German-English transformer",
-    "One-shot handwriting",
-]
-SHIPPED_HREF = "https://github.com/Wasif0410?tab=repositories"
-
 # ---- "What I'm building" cards ------------------------------------------------------
 # repo: public repo name for live stars/language (None for private projects).
 # status: "building" or "live". stack: shown when there is no public repo.

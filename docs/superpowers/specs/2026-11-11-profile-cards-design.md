@@ -168,3 +168,8 @@ Supersedes the matching parts above.
   BUILDING / LIVE badge; public ones show live stars and language.
 - Trajectory entry counting is removed (no card uses it).
 - `render_cards.py` deletes cards in `cards/` that the config no longer produces.
+
+## Revision 2 (2026-11-11)
+
+- WORK / STUDY / RESEARCH tiles move to second place, directly under the hero.
+- The "Shipped in 2026" card is removed (module, config list and tests deleted).

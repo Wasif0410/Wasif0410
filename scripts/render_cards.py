@@ -10,7 +10,7 @@ import json
 import os
 
 import config
-from cards import activity, heatmap, hero, repos, shipped, tiles
+from cards import activity, heatmap, hero, repos, tiles
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DATA = os.path.join(ROOT, "data", "profile.json")
@@ -37,7 +37,6 @@ def main():
         "hero.svg": hero.render(config, data, portrait),
         "heatmap.svg": heatmap.render(config, data),
         "activity.svg": activity.render(config, data),
-        "shipped.svg": shipped.render(config, data),
         "title-building.svg": tiles.title(config, "WHAT I'M BUILDING", "RIGHT NOW"),
     }
     for i, tile in enumerate(config.TILES):
